@@ -10,7 +10,7 @@ PROJECT_NAME=${PROJECT_NAME:-Project}
 PROJECT_URL=${PROJECT_URL:-"https://github.com/Zuntan03/${PROJECT_NAME}"}
 PROJECT_BRANCH=${PROJECT_BRANCH:-main}
 
-SCRIPT_DIR="$(dirname -- "$(realpath -- "${BASH_SOURCE[0]}")")"
+SCRIPT_DIR=$(cd "$(dirname "$0")" && pwd)
 EASY_TOOLS_DIR="${SCRIPT_DIR}/EasyTools"
 EASY_GIT_DIR="${EASY_TOOLS_DIR}/Git"
 
