@@ -31,6 +31,7 @@ if not exist "%EASY_TOOLS%\Python\Python_DefaultVersion.txt" (
 call %PYTHON_ACTIVATE%
 if %ERRORLEVEL% neq 0 ( popd & exit /b 1 )
 
+@REM pip==25.2
 echo python -m pip install -qq -U pip setuptools wheel
 python -m pip install -qq -U pip setuptools wheel
 if %ERRORLEVEL% neq 0 ( pause & popd & exit /b 1 )
