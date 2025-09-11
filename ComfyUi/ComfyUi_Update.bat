@@ -14,9 +14,11 @@ start %~dp0vc_redist.x64.exe /install /passive /norestart
 :EXIST_VC_REDIST_X64
 
 set COMFYUI_VERSION=
+if exist "%~dp0ComfyUiVersionControl-Disabled.txt" ( goto :SKIP_COMFYUI_VERSION_CONTROL )
 if exist "%~dp0ComfyUi_Version.txt" (
     set /p COMFYUI_VERSION=<"%~dp0ComfyUi_Version.txt"
 )
+:SKIP_COMFYUI_VERSION_CONTROL
 
 @REM https://github.com/comfyanonymous/ComfyUI
 call %GITHUB_CLONE_OR_PULL_TAG% comfyanonymous ComfyUI master %COMFYUI_VERSION%
@@ -42,6 +44,8 @@ echo pip uninstall -qq -y %UNINSTALL_MODULE%
 pip uninstall -qq -y %UNINSTALL_MODULE%
 if %ERRORLEVEL% neq 0 ( pause & popd & exit /b 1 )
 :EASY_UNINSTALL_MODULE_NOT_FOUND
+
+if exist "%~dp0PytorchVersionControl-Disabled.txt" ( goto :SKIP_PYTORCH_VERSION_CONTROL )
 
 if not exist "%~dp0Torch_Version.txt" (
 	echo torch==2.8.0+cu128 torchvision==0.23.0+cu128 torchaudio==2.8.0+cu128 --index-url https://download.pytorch.org/whl/cu128> "%~dp0Torch_Version.txt"
@@ -91,6 +95,8 @@ echo pip install -qq %SAGE_ATTENTION_VERSION%
 pip install -qq %SAGE_ATTENTION_VERSION%
 if %ERRORLEVEL% neq 0 ( pause & popd & exit /b 1 )
 
+:SKIP_PYTORCH_VERSION_CONTROL
+
 echo pip install -qq -r requirements.txt
 pip install -qq -r requirements.txt
 if %ERRORLEVEL% neq 0 ( pause & popd & exit /b 1 )
@@ -99,9 +105,11 @@ popd rem ComfyUI
 pushd ComfyUI\custom_nodes
 
 set COMFYUI_MANAGER_VERSION=
+if exist "%~dp0ComfyUiVersionControl-Disabled.txt" ( goto :SKIP_COMFYUI_MANAGER_VERSION_CONTROL )
 if exist "%~dp0ComfyUiManager_Version.txt" (
 	set /p COMFYUI_MANAGER_VERSION=<"%~dp0ComfyUiManager_Version.txt"
 )
+:SKIP_COMFYUI_MANAGER_VERSION_CONTROL
 
 @REM https://github.com/Comfy-Org/ComfyUI-Manager
 call %GITHUB_CLONE_OR_PULL_TAG% Comfy-Org ComfyUI-Manager main %COMFYUI_MANAGER_VERSION%

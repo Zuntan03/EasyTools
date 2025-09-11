@@ -1,5 +1,7 @@
 ﻿/ComfyUi/ComfyUi_Version.txt
 /ComfyUi/ComfyUiManager_Version.txt
+/ComfyUi/ComfyUiVersionControl-Disabled.txt
+/ComfyUi/PytorchVersionControl-Disabled.txt
 /ComfyUi/SageAttention_Version.txt
 /ComfyUi/Torch_Version.txt
 /ComfyUi/Triton_Version.txt
