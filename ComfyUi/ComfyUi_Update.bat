@@ -27,8 +27,9 @@ if %ERRORLEVEL% neq 0 ( exit /b 1 )
 pushd ComfyUI
 
 @REM https://github.com/comfyanonymous/ComfyUI#manual-install-windows-linux
+@REM https://github.com/cubiq/ComfyUI_essentials build reqireds Python 3.12.9
 if not exist "%EASY_TOOLS%\Python\Python_DefaultVersion.txt" (
-	echo 3.12.9> "%EASY_TOOLS%\Python\Python_DefaultVersion.txt"
+	echo 3.10.6> "%EASY_TOOLS%\Python\Python_DefaultVersion.txt"
 )
 call %PYTHON_ACTIVATE%
 if %ERRORLEVEL% neq 0 ( popd & exit /b 1 )
