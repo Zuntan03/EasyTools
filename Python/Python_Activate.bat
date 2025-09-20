@@ -3,6 +3,7 @@ chcp 65001 > NUL
 set PS_CMD=PowerShell -Version 5.1 -NoProfile -ExecutionPolicy Bypass
 set CURL_CMD=C:\Windows\System32\curl.exe -kL
 set PYTHON_CMD=python
+set PYTHONUTF8=1
 
 @REM set EASY_PYTHON_VERSION=3.10.6
 @REM 3.10.6, 3.12.9
