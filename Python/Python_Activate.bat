@@ -107,5 +107,20 @@ if not exist %VIRTUAL_ENV_DIR%\ (
 	)
 )
 
+if exist %EASY_PORTABLE_PYTHON_DIR%\ (
+	@REM tcc.exe & VS Build Tools cl.exe
+	if not exist %VIRTUAL_ENV_DIR%\Scripts\Include\Python.h (
+		echo xcopy /SQY %EASY_PORTABLE_PYTHON_DIR%\include\*.* %VIRTUAL_ENV_DIR%\Scripts\Include\
+		xcopy /SQY %EASY_PORTABLE_PYTHON_DIR%\include\*.* %VIRTUAL_ENV_DIR%\Scripts\Include\
+
+		echo xcopy /SQY %EASY_PORTABLE_PYTHON_DIR%\libs\*.* %VIRTUAL_ENV_DIR%\Scripts\libs\
+		xcopy /SQY %EASY_PORTABLE_PYTHON_DIR%\libs\*.* %VIRTUAL_ENV_DIR%\Scripts\libs\
+	)
+
+	@REM VS Build Tools
+	@REM echo set "INCLUDE=%INCLUDE%;%EMBEDDABLE_PYTHON%\include"
+	@REM set "INCLUDE=%INCLUDE%;%EMBEDDABLE_PYTHON%\include"
+)
+
 call %VIRTUAL_ENV_DIR%\Scripts\activate.bat
 if %ERRORLEVEL% neq 0 ( pause &  exit /b 1 )
